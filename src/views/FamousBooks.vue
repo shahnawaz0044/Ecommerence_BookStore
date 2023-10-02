@@ -1,14 +1,15 @@
 <template>
-    <v-app class="fa-bo-container">
-      <v-container class="fa-bo-box">
-        <h1>Famous Books</h1>
+  <v-app class="vapp">
+
+    <v-container class="fa-bo-box">
+      <h1>Famous Books</h1>
         <v-row>
     <v-col
-      v-for="index in 4"
+      v-for="index in 3"
       :key="index"
       cols="12"    
       sm="6"      
-      md="3"       
+      md="4"       
     >
       <v-card class="famous-book" outlined>
         <v-img
@@ -38,22 +39,22 @@ export default {
 };
 </script>
 <style scoped>
-.fa-bo-container{
+.vapp{
+  height: auto;
   background-color: rgb(43, 32, 32);
- 
 }
+
 .fa-bo-box{
-  margin-top: 50px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  height: 100%;
   justify-content: center;
   align-items: center;
   color: white;
 
 }
 .famous-book {
-  max-width: 300px;
+  max-width: 250px;
   margin: 20px;
 }
 

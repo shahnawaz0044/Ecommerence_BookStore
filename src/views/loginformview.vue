@@ -19,7 +19,12 @@
                   required
                   type="password"
                 ></v-text-field>
-                <v-btn type="submit" color="primary" block>Login</v-btn>
+                <div>
+                  <v-btn type="submit" color="primary" block>Login</v-btn>
+                  <v-btn  color="primary" block class="log-btn" to="/signup">Create Account</v-btn>
+                </div>
+                <router-view></router-view>
+
               </v-form>
             </v-card-text>
           </v-card>
@@ -47,4 +52,9 @@
     },
   };
   </script>
+  <style scoped>
+  .log-btn{
+    margin-top: 10px;
+  }
+  </style>
   

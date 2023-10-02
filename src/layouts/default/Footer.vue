@@ -56,6 +56,7 @@
 
 .footer{
     background-color: #1b3aa0;
+    border: 1px solid #000;
     color: White;
     align-items: center;
 }

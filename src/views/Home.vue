@@ -8,7 +8,7 @@
   <v-container class="heading-slider">
     <h1>Enjoy a new world inside a book</h1>
     <p>Excellent Books are at Your Doorstep because of its excellent reputation and many satisfied customers, In addition, we believe that having a limited budget should never stop you from reading. As a result, we offer amazing savings on a selection of books.</p>
-    <v-btn color="primary" class="mt-4">Shop Now</v-btn>
+    <v-btn color="primary" class="mt-4" to="/login">Shop Now</v-btn>
   </v-container>
 </v-carousel-item>
 
@@ -19,7 +19,7 @@
   <v-container class="heading-slider">
     <h1>Enjoy a new world inside a book</h1>
     <p>Excellent Books are at Your Doorstep because of its excellent reputation and many satisfied customers, In addition, we believe that having a limited budget should never stop you from reading. As a result, we offer amazing savings on a selection of books.</p>
-    <v-btn color="primary" class="mt-4">Shop Now</v-btn>
+    <v-btn color="primary" class="mt-4" to="/login">Shop Now</v-btn>
   </v-container>
 </v-carousel-item>
 
@@ -30,12 +30,13 @@
   <v-container class="heading-slider">
     <h1>Enjoy a new world inside a book</h1>
     <p>Excellent Books are at Your Doorstep because of its excellent reputation and many satisfied customers, In addition, we believe that having a limited budget should never stop you from reading. As a result, we offer amazing savings on a selection of books.</p>
-    <v-btn color="primary" class="mt-4">Shop Now</v-btn>
+    <v-btn color="primary" class="mt-4" to="/login">Shop Now</v-btn>
   </v-container>
+  <router-view></router-view>
+
 </v-carousel-item>
 </v-carousel>
 
-<!-- Main Content -->
 <v-main>
   <Products />
   <FamousBooks />
@@ -70,13 +71,15 @@
 
 <script>
 import Products from './Products.vue';
-import OurStory from './FamousBooks.vue';
 import FamousBooks from './FamousBooks.vue';
+import ShowAllBooksVue from './ShowAllBooks.vue';
+
 export default {
   name:"Home",
   components:{
     Products,
-    FamousBooks
+    FamousBooks,
+    ShowAllBooksVue
 },
   
   data() {

@@ -5,8 +5,8 @@
       <v-toolbar-title>E-Commerce Book Store</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn text to="/">Home</v-btn>
-      <v-btn text >Products</v-btn>
-      <v-btn text>Cart</v-btn>
+      <v-btn text to="/products" >Products</v-btn>
+      <v-btn text to="/cartbox">Cart</v-btn>
       <div>
     <v-btn to="/login" class="login-button" text>Login</v-btn>
     <v-btn to="/signup" class="signup-button" text>Sign Up</v-btn>

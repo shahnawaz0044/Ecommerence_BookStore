@@ -7,14 +7,8 @@
             <v-card-text>
               <v-form @submit="signup">
                 <v-text-field
-                  v-model="firstName"
-                  label="First Name"
-                  outlined
-                  required
-                ></v-text-field>
-                <v-text-field
-                  v-model="lastName"
-                  label="Last Name"
+                  v-model="name"
+                  label="Name"
                   outlined
                   required
                 ></v-text-field>
@@ -28,6 +22,13 @@
                 <v-text-field
                   v-model="password"
                   label="Password"
+                  outlined
+                  required
+                  type="password"
+                ></v-text-field>
+                <v-text-field
+                  v-model="confirmpassword"
+                  label=" Confirm Password"
                   outlined
                   required
                   type="password"

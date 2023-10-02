@@ -3,6 +3,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import loginformview from '../views/loginformview'
 import SignUpForm from '../views/SignUpForm'
 import AddCard from '../views/AddCard'
+import ShowAllBooks from '../views/ShowAllBooks'
+import DashBoard from '../components/DashBoard'
+import CartBox from '../components/CartBox'
 
 
 const routes = [
@@ -35,6 +38,25 @@ const routes = [
     path:'/AddCard',
     name: 'AddCard',
     component:AddCard
+  },
+
+  {
+    path:'/products',
+    name: 'products',
+    component:ShowAllBooks
+  },
+
+  {
+    path:'/dashboard',
+    name: 'dashboard',
+    component:DashBoard
+  },
+
+  
+  {
+    path:'/cartbox',
+    name: 'cartbox',
+    component:CartBox
   }
  
 ]

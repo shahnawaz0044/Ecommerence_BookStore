@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1>New Products</h1>
+    <h1 class="pro-hea">New Products</h1>
     <v-row class="products">
           <v-col
             v-for="product in products"
@@ -12,101 +12,62 @@
           >
 
           <v-card class="mb-4">
-              <v-img :src="product.image" aspect-ratio="1">
+            <v-img :src="product.cover_image" aspect-ratio="1">
               </v-img>
               <v-card-title>{{ product.name }}</v-card-title>
               <v-card-text>{{ product.description }}</v-card-text>
               <v-card-actions>
                 <v-btn color="primary" to="AddCard" text @click="addToCart(product)">
-                  Add to Cart
+                  Show Details
                 </v-btn>
                 <v-spacer></v-spacer>
-                <v-btn text>{{ product.price }}</v-btn>
+                <v-btn text>${{ product.price }}</v-btn>
               </v-card-actions>
             </v-card>
-
-            
           </v-col>
         </v-row>
+        <div class="prod-btn-sho">
+
+          <v-btn class="pro-btn" color="primary" to="products">Show More</v-btn>
+        </div>
+        <router-view></router-view>
+
   </v-container>
         
 </template>
 <script>
 import AddCard from './AddCard.vue';
+
+import axios from 'axios'
+
 export default {
     name:"Products",
     components: {
       AddCard
     },
-  data() {
-    return {
-products: [
-        // Sample product data (replace with your actual data)
-        {
-          id: 1,
-          name: "Product 1",
-          description: "Description of Product 1",
-          image: "https://images.unsplash.com/photo-1459369510627-9efbee1e6051?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-          price: "$10.99",
-        },
-        // Add more product data as needed
-        {
-          id: 1,
-          name: "Product 1",
-          description: "Description of Product 1",
-          image: "https://images.unsplash.com/photo-1459369510627-9efbee1e6051?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-          price: "$10.99",
-        },
-        // Add more product data as needed
-        {
-          id: 1,
-          name: "Product 1",
-          description: "Description of Product 1",
-          image: "https://images.unsplash.com/photo-1459369510627-9efbee1e6051?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-          price: "$10.99",
-        },
-        // Add more product data as needed
-        {
-          id: 1,
-          name: "Product 1",
-          description: "Description of Product 1",
-          image: "https://images.unsplash.com/photo-1459369510627-9efbee1e6051?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-          price: "$10.99",
-        },
-          // Add more product data as needed
-          {
-          id: 1,
-          name: "Product 1",
-          description: "Description of Product 1",
-          image: "https://images.unsplash.com/photo-1459369510627-9efbee1e6051?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-          price: "$10.99",
-        },
-          // Add more product data as needed
-          {
-          id: 1,
-          name: "Product 1",
-          description: "Description of Product 1",
-          image: "https://images.unsplash.com/photo-1459369510627-9efbee1e6051?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-          price: "$10.99",
-        },
-          // Add more product data as needed
-          {
-          id: 1,
-          name: "Product 1",
-          description: "Description of Product 1",
-          image: "https://images.unsplash.com/photo-1459369510627-9efbee1e6051?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-          price: "$10.99",
-        },
-          // Add more product data as needed
-          {
-          id: 1,
-          name: "Product 1",
-          description: "Description of Product 1",
-          image: "https://images.unsplash.com/photo-1459369510627-9efbee1e6051?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-          price: "$10.99",
-        },
-      ],
-    };
+    
+data: () => ({
+
+show: false,
+
+products: [],
+
+
+searchQuery: '',
+
+}),
+
+async mounted() {
+
+let result = await axios.get("http://10.0.10.220:8080/api/book")
+
+this.products = result.data.books
+
+console.log(this.products)
+
+
+
+
 },
 methods: {
     toggleSidebar() {
@@ -121,5 +82,18 @@ methods: {
 
 .products{
     margin: 30px;
+}
+.pro-hea{
+  margin-top: 15px;
+}
+.prod-btn-sho{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+.pro-btn{
+  height: 40px;
+  width: 200px;
 }
 </style>
