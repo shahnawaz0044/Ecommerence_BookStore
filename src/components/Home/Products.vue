@@ -1,5 +1,4 @@
 <template>
-  <v-container>
     <h1 class="pro-hea">New Products</h1>
     <v-row class="products">
           <v-col
@@ -31,12 +30,10 @@
           <v-btn class="pro-btn" color="primary" to="products">Show More</v-btn>
         </div>
         <router-view></router-view>
-
-  </v-container>
         
 </template>
 <script>
-import AddCard from './AddCard.vue';
+import AddCard from '../AddCard.vue';
 
 import axios from 'axios'
 
@@ -53,7 +50,7 @@ show: false,
 products: [],
 
 
-searchQuery: '',
+
 
 }),
 

@@ -40,46 +40,20 @@
 <v-main>
   <Products />
   <FamousBooks />
-      <v-container>
-        <v-card elevation="3" class="newsletter">
-      <v-card-title class="headline text-center">Subscribe to Our Newsletter</v-card-title>
-      <v-card-text>
-        <v-form @submit.prevent="subscribe">
-          <v-row >
-            <v-col cols="12" md="6" offset-md="3" >
-              <v-text-field class="input"
-                v-model="email"
-                label="Email"
-                required
-                type="email"
-                outlined
-              ></v-text-field>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" class="text-center">
-              <v-btn type="submit" color="primary">Subscribe</v-btn>
-            </v-col>
-          </v-row>
-        </v-form>
-      </v-card-text>
-    </v-card>
-  </v-container>
+      
 </v-main>
 </v-app>
 </template>
 
 <script>
-import Products from './Products.vue';
-import FamousBooks from './FamousBooks.vue';
-import ShowAllBooksVue from './ShowAllBooks.vue';
+import Products from '@/components/Home/Products.vue';
+import FamousBooks from '../components/Home/FamousBooks.vue';
 
 export default {
   name:"Home",
   components:{
     Products,
     FamousBooks,
-    ShowAllBooksVue
 },
   
   data() {
@@ -128,20 +102,5 @@ color: white;
   border-radius: 5px;
   justify-content: center;
 }
-.headline {
-  font-weight: 700;
-  margin: 20px 0px;
-  color:white;
-}
-.newsletter{
-  background-color: #333;
-}
-.input{
-  margin: 0px;
-  padding-top: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
-  background-color: white;
-  border-radius: 10px;
-}
+
 </style>

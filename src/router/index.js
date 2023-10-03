@@ -2,10 +2,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import loginformview from '../views/loginformview'
 import SignUpForm from '../views/SignUpForm'
-import AddCard from '../views/AddCard'
-import ShowAllBooks from '../views/ShowAllBooks'
-import DashBoard from '../components/DashBoard'
-import CartBox from '../components/CartBox'
+import AddCard from '../components/AddCard'
+import ShowAllBooks from '../components/Products/ShowAllBooks'
+import DashBoard from '../components/Admin/DashBoard'
+import CartBox from '../components/Cart/Cartbox'
+import Contact from '../components/Contact/ContactUs'
 
 
 const routes = [
@@ -19,7 +20,7 @@ const routes = [
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
+        component: () => import(/* webpackChunkName: "home" */ '@/pages/Home.vue'),
       },
       {
         path:'/login',
@@ -31,7 +32,13 @@ const routes = [
         path:'/signup',
         name: 'SignUp',
         component:SignUpForm
-      }
+      },
+      {
+        path:'/contact',
+        name: 'contact',
+        component:Contact
+      },
+    
     ],
   },
   {
@@ -45,7 +52,7 @@ const routes = [
     name: 'products',
     component:ShowAllBooks
   },
-
+ 
   {
     path:'/dashboard',
     name: 'dashboard',
