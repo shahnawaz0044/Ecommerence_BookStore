@@ -4,9 +4,9 @@ import loginformview from '../views/loginformview'
 import SignUpForm from '../views/SignUpForm'
 import AddCard from '../components/AddCard'
 import ShowAllBooks from '../components/Products/ShowAllBooks'
-import DashBoard from '../components/Admin/DashBoard'
+import DashBoard from '@/pages/DashBoard'
 import CartBox from '../components/Cart/Cartbox'
-import Contact from '../components/Contact/ContactUs'
+import Contact from '@/pages/Contact'
 
 
 const routes = [

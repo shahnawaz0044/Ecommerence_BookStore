@@ -1,74 +1,121 @@
 <template>
-    <v-container>
-      <v-row justify="center">
-        <v-col cols="12" sm="8" md="6">
-          <v-card class="elevation-12">
-            <v-card-title class="text-center">Contact Us</v-card-title>
-            <v-card-text>
-              <v-form @submit="submitForm" ref="form">
-                <v-text-field
-                  v-model="name"
-                  label="Name"
-                  outlined
-                  required
-                  :rules="nameRules"
-                ></v-text-field>
-                <v-text-field
-                  v-model="email"
-                  label="Email"
-                  outlined
-                  required
-                  type="email"
-                  :rules="emailRules"
-                ></v-text-field>
-                <v-textarea
-                  v-model="message"
-                  label="Message"
-                  outlined
-                  required
-                  rows="4"
-                  :rules="messageRules"
-                ></v-textarea>
-                <v-btn type="submit" color="primary" block>Submit</v-btn>
-              </v-form>
-            </v-card-text>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        name: '',
-        email: '',
-        message: '',
-        nameRules: [
-          (v) => !!v || 'Name is required',
-          (v) => (v && v.length >= 3) || 'Name must be at least 3 characters',
-        ],
-        emailRules: [
-          (v) => !!v || 'Email is required',
-          (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-        ],
-        messageRules: [(v) => !!v || 'Message is required'],
-      };
+  <v-container class="contact-us-form" >
+    <v-row class="contact-us-form">
+      <v-col cols="12">
+        <div class="contact_form_inner">
+          <div class="contact_field">
+            <h3>Contact Us</h3>
+            <p>Feel free to contact us any time. We will get back to you as soon as we can!</p>
+            <v-text-field v-model="name" label="Name" outlined class="form-group"></v-text-field>
+            <v-text-field 
+            v-model="email" 
+            label="Email" 
+            outlined 
+            class="form-group"     
+            :rules="emailRules"
+            ></v-text-field>
+            <v-textarea v-model="message" label="Message" outlined class="form-group"></v-textarea>
+            <v-btn @click="sendMessage" class="contact_form_submit">Send</v-btn>
+          </div>
+        </div>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      name: '',
+      email: '',
+      message: '',
+    };
+  },
+
+  computed: {
+    emailRules() {
+      return [
+        (v) => !!v || 'Email is required',
+        (v) => /.+@.+\..+/.test(v) || 'Email must be valid',
+      ];
     },
-    methods: {
-      submitForm() {
-        if (this.$refs.form.validate()) {
-          console.log('Form submitted with data:', {
-            name: this.name,
-            email: this.email,
-            message: this.message,
-          });
-        } else {
-          console.error('Please correct the form errors');
-        }
-      },
+  },
+
+  methods: {
+    sendMessage() {
+      console.log('Name:', this.name);
+      console.log('Email:', this.email);
+      console.log('Message:', this.message);
     },
-  };
-  </script>
-  
+  },
+};
+</script>
+
+<style scoped>
+/* Add your custom CSS styles here if needed */
+.contact-us-form{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+
+}
+.contact_form_inner {
+  background-color: #fff;
+  position: relative;
+}
+
+.contact_field {
+ 
+  padding: 60px 20px 90px 90px; /* Adjust padding as needed */
+}
+
+.contact_field h3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+  color: #000;
+  font-size: 40px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.contact_field p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+  color: #000;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin-bottom: 35px;
+}
+
+.form-group {
+  margin-top: 20px; /* Adjust spacing between form fields */
+}
+
+.contact_form_submit {
+  background: linear-gradient(to top right, #1325e8 -5%, #8f10b7 100%);
+  border: none;
+  color: #fff;
+  padding: 10px 30px;
+  width: 100%;
+  margin-top: 25px;
+  border-radius: 35px;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 2px;
+  transition: background 0.3s; /* Add a smooth hover transition */
+}
+
+.contact_form_submit:hover {
+  background: #1325e8; /* Change background color on hover */
+}
+
+</style>
